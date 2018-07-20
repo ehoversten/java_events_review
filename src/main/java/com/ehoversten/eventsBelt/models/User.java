@@ -1,12 +1,18 @@
 package com.ehoversten.eventsBelt.models;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
@@ -50,16 +56,16 @@ public class User {
 	
 	// --- RELATIONSHIPS --- // 
 	
-//    @OneToMany(mappedBy="host", fetch = FetchType.LAZY)
-//    private List<Event> myEvents;
+    @OneToMany(mappedBy="host", fetch = FetchType.LAZY)
+    private List<Event> myEvents;
 	
-//    @ManyToMany(fetch = FetchType.LAZY)
-//    @JoinTable(
-//        name = "users_events", 
-//        joinColumns = @JoinColumn(name = "user_id"), 
-//        inverseJoinColumns = @JoinColumn(name = "event_id")
-//    )
-//    private List<Event> joinedEvents;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+        name = "users_events", 
+        joinColumns = @JoinColumn(name = "user_id"), 
+        inverseJoinColumns = @JoinColumn(name = "event_id")
+    )
+    private List<Event> joinedEvents;
 	
 //    @OneToMany(mappedBy="host", fetch = FetchType.LAZY)
 //    private List<Message> messages;
